@@ -7,8 +7,7 @@ pipelines:
         caches:
           - bundler
         script:
-          - bundle update --bundler
-          - bundle install --path vendor/bundle
+          - '[ -f Gemfile ] && bundle install'
           - bundle exec jekyll build
           - mkdir dist
           - tar -czvf dist/package-${BITBUCKET_BUILD_NUMBER}.tar.gz -C public .
