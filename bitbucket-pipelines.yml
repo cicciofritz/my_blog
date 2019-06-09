@@ -22,8 +22,7 @@ pipelines:
         script:
           - tar -xf dist/package-${BITBUCKET_BUILD_NUMBER}.tar.gz -C upload
           - apk update && apk add lftp
-          - lftp -c;
-          - open ftp://francescogiavatto:tX5gFMAK5qsn@ftp.francescogiavatto.altervista.org; 
+          - lftp -c open ftp://francescogiavatto:tX5gFMAK5qsn@ftp.francescogiavatto.altervista.org; 
           - lcd ./upload;
          # - cd /web/public_html;
           - mirror --reverse --delete --use-cache --verbose --allow-chown --allow-suid --no-umask --parallel=2 --exclude-glob .svn"
