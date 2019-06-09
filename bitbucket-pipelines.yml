@@ -21,10 +21,10 @@ pipelines:
         trigger: manual
         script:
           - tar -xf dist/package-${BITBUCKET_BUILD_NUMBER}.tar.gz -C upload
-          - apk update && apk add openssh rsync
-          - rsync -a  -e "ssh -o StrictHostKeyChecking=no" --delete upload/ my-user@my-host:/var/www/html-${BITBUCKET_BUILD_NUMBER}
-          - ssh -o StrictHostKeyChecking=no my-user@my-host "rm -r /var/www/html"
-          - ssh -o StrictHostKeyChecking=no my-user@my-host"mv '/var/www/html-${BITBUCKET_BUILD_NUMBER}' '/var/www/html'"
+#          - apk update && apk add openssh rsync
+#          - rsync -a  -e "ssh -o StrictHostKeyChecking=no" --delete upload/ francescogiavatto@ftp.francescogiavatto.altervista.org:/var/www/html-${BITBUCKET_BUILD_NUMBER}
+#          - ssh -o StrictHostKeyChecking=no  francescogiavatto@ftp.francescogiavatto.altervista.org "rm -r /var/www/html"
+#          - ssh -o StrictHostKeyChecking=no francescogiavatto@ftp.francescogiavatto.altervista.org"mv '/var/www/html-${BITBUCKET_BUILD_NUMBER}' '/var/www/html'"
 definitions:
   caches:
     bundler: vendor/bundle
