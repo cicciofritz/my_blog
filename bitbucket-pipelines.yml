@@ -22,7 +22,7 @@ pipelines:
         script:
           - tar -xf dist/package-${BITBUCKET_BUILD_NUMBER}.tar.gz -C upload
           - apk update && apk add lftp
-          - lftp -c "open ftp://francescogiavatto:tX5gFMAK5qsn@ftp.francescogiavatto.altervista.org; lcd ./upload; mirror --reverse --delete --use-cache --verbose --allow-chown --allow-suid --no-umask --parallel=2 --exclude-glob .svn"
+          - lftp -c "ssl:verify-certificate false; open ftp://francescogiavatto:tX5gFMAK5qsn@ftp.francescogiavatto.altervista.org; lcd ./upload; mirror --reverse --delete --use-cache --verbose --allow-chown --allow-suid --no-umask --parallel=2 --exclude-glob .svn"
 #          - apk update && apk add openssh rsync
 #          - rsync -a  -e "ssh -o StrictHostKeyChecking=no" --delete upload/ francescogiavatto@ftp.francescogiavatto.altervista.org:/var/www/html-${BITBUCKET_BUILD_NUMBER}
 #          - ssh -o StrictHostKeyChecking=no  francescogiavatto@ftp.francescogiavatto.altervista.org "rm -r /var/www/html"
