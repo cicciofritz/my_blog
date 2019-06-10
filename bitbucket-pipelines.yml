@@ -9,7 +9,7 @@ pipelines:
         script:
           - gem install bundler:2.0.1
           - bundle install --path vendor/bundle
-          - bundle exec jekyll build
+          - bundle exec jekyll build --destination public
           - mkdir dist
           - tar -czvf dist/package-${BITBUCKET_BUILD_NUMBER}.tar.gz -C public .
         artifacts:
